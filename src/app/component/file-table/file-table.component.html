@@ -1,0 +1,42 @@
+<div *ngIf="files">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Definicja kolumn tabeli --->
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let file"> {{file.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Filename </th>
+      <td mat-cell *matCellDef="let file"> {{file.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bucket">
+      <th mat-header-cell *matHeaderCellDef> Bucket </th>
+      <td mat-cell *matCellDef="let file"> {{file.bucket}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="uploadDate">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let file"> {{file.uploadDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let file">
+        <button mat-button (click)="getFileById(file.id)">Details</button>
+        <button mat-button (click)="moveToTrash(file.s3Key)">Move to Trash</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="files.totalElements"
+                 [pageSize]="pageSize"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

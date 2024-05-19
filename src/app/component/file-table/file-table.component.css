@@ -1,0 +1,8 @@
+.mat-header-cell, .mat-cell {
+  background-color: #f0f0f0; /* Tło dla komórek nagłówka i komórek danych */
+  color: #333; /* Kolor tekstu */
+}
+
+.mat-header-row {
+  background-color: #ddd; /* Tło dla wiersza nagłówka */
+}

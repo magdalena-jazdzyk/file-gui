@@ -1,0 +1,12 @@
+<p>upload-file works!</p>
+<div>UPLOAD</div>
+<button (click)="callTestMethod()">Wywołaj /test</button>
+
+<div>{{response}}</div>
+
+<p>file-upload-component works!</p>
+<div>
+  <input type="file" (change)="onFileSelected($event)">
+  <button (click)="uploadFile()">Upload File</button>
+</div>
+
